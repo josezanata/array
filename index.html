@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Compras</title>
+</head>
+<body>
+    <h2>Lista de Supermercado</h2>
+    
+    <input type="text" id="item" placeholder="Ex: Arroz, Feijão...">
+    
+    <button onclick="adicionarItem()">Incluir Item</button>
+    <button onclick="exibirCarrinho()">Ver Carrinho</button>
+
+    <p id="exibicao"></p>
+
+    <script>
+        let carrinho = [];
+
+        function adicionarItem() {
+            let campo = document.getElementById("item");
+            let valor = campo.value;
+
+            if (valor != "") {
+                carrinho.push(valor); 
+                campo.value = "";     
+                campo.focus();        
+            }
+        }
+
+        function exibirCarrinho() {
+            let listaHtml = "<strong>Itens no Carrinho:</strong><br>";
+            
+            for (let i = 0; i < carrinho.length; i++) {
+                listaHtml += (i + 1) + ". " + carrinho[i] + "<br>";
+            }
+            
+            document.getElementById("exibicao").innerHTML = listaHtml;
+        }
+    </script>
+</body>
+</html>
